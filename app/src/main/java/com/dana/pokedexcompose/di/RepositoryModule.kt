@@ -2,6 +2,7 @@ package com.dana.pokedexcompose.di
 
 import com.dana.pokedexcompose.network.PokemonService
 import com.dana.pokedexcompose.network.model.PokemonDtoMapper
+import com.dana.pokedexcompose.network.model.PokemonTypeDtoMapper
 import com.dana.pokedexcompose.repository.PokemonRepository
 import com.dana.pokedexcompose.repository.PokemonRepository_Impl
 import dagger.Module
@@ -16,12 +17,14 @@ object RepositoryModule {
     @Singleton
     @Provides
     fun providePokemonRepository(
+        pokemonTypeMapper: PokemonTypeDtoMapper,
         pokemonService: PokemonService,
-        pokemonMapper: PokemonDtoMapper
+        pokemonMapper: PokemonDtoMapper,
     ) : PokemonRepository {
         return PokemonRepository_Impl(
             pokemonService = pokemonService,
-            mapper = pokemonMapper
+            mapper = pokemonMapper,
+            typeMapper = pokemonTypeMapper,
         )
     }
 }

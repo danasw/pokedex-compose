@@ -2,6 +2,7 @@ package com.dana.pokedexcompose.di
 
 import com.dana.pokedexcompose.network.PokemonService
 import com.dana.pokedexcompose.network.model.PokemonDtoMapper
+import com.dana.pokedexcompose.network.model.PokemonTypeDtoMapper
 import com.google.gson.GsonBuilder
 import dagger.Module
 import dagger.Provides
@@ -20,6 +21,12 @@ object NetworkModule {
     @Provides
     fun providePokemonMapper(): PokemonDtoMapper{
         return PokemonDtoMapper()
+    }
+
+    @Singleton
+    @Provides
+    fun providePokemonTypeMapper(): PokemonTypeDtoMapper{
+        return PokemonTypeDtoMapper()
     }
 
     @Singleton

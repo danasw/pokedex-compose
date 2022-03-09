@@ -14,13 +14,13 @@ class PokemonDtoMapper : DomainMapper<PokemonDto, Pokemon>{
     override fun mapFromDomainModel(domainModel: Pokemon): PokemonDto {
         return PokemonDto(
             name = domainModel.name,
-            url = domainModel.url
+            url = domainModel.url,
         )
     }
 
-    fun toDomainList(inital: List<PokemonDto>): List<Pokemon> {
+    fun toDomainList(initial: List<PokemonDto>): List<Pokemon> {
         //map will loop every entry from list then execute
-        return inital.map { mapToDomainModel(it) }
+        return initial.map { mapToDomainModel(it) }
     }
 
     fun fromDomainList(initial: List<Pokemon>): List<PokemonDto>{
